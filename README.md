@@ -6,7 +6,7 @@ This workshop is a hands-on walk through of a three-tier web architecture in AWS
 ## Artitecture Overview:
 ![Artitecture](./images/3-Tier%20Arti%20Flowchart.png)
 
- In this architecture, a public-facing Application Load Balancer forwards client traffic to our web tier EC2 instances. The web tier is running Nginx webservers that are configured to serve a React.js website and redirects our API calls to the application tier’s internal facing load balancer. The internal facing load balancer then forwards that traffic to the application tier, which is written in Node.js. The application tier manipulates data in an Aurora MySQL multi-AZ database and returns it to our web tier. Load balancing, health checks and autoscaling groups are created at each layer to maintain the availability of this architecture.
+ In this architecture, a public-facing Application Load Balancer forwards client traffic to our web tier EC2 instances. The web tier is running Nginx webservers that are configured to serve a website and redirects our to the application tier's internal facing load balancer. The internal facing load balancer then forwards that traffic to the application tier, which is written in php. The application tier manipulates data in an RDS MySQL and returns it to our web tier. Load balancing, health checks and autoscaling groups are created at each layer to maintain the availability of this architecture.
 
  ## Step-1: Create VPC
  ![VPC](./images/VPC.webp)
@@ -146,4 +146,5 @@ Create __Internal Load Balancer__ for AppTier
 ## Conclusion
 
 A 3-tier architecture separates an application into three logical layers: web (presentation), app (business logic), and database (data storage). This structure enhances scalability, security, and maintenance by isolating each layer. It allows each tier to be managed, updated, and scaled independently. In cloud environments like AWS, it’s a best-practice model for building robust and modular applications.
+
 
