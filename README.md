@@ -19,14 +19,14 @@ This workshop is a hands-on walk through of a three-tier web architecture in AWS
 
 Create 8 Subnets- 2 Public Subnet, 2 Private subnets for Webtier, 2 subnets for Apptier and 2 subnets for dbtier.
 
-PublicSubnetZoneA- 10.0.0.0/20
-PublicSubnetZoneB- 10.0.16.0/20
-WebSubnetZoneA-    10.0.32.0/20
-WebSubnetZoneB-    10.0.48.0/20
-AppSubnetZoneA-    10.0.64.0/20
-AppSubnetZoneB-    10.0.80.0/20
-DBSubnetZoneA-     10.0.96.0/20
-DBSubnetZoneB-     10.0.112.0/20
+* PublicSubnetZoneA- 10.0.0.0/20
+* PublicSubnetZoneB- 10.0.16.0/20
+* WebSubnetZoneA-    10.0.32.0/20
+* WebSubnetZoneB-    10.0.48.0/20
+* AppSubnetZoneA-    10.0.64.0/20
+* AppSubnetZoneB-    10.0.80.0/20
+* DBSubnetZoneA-     10.0.96.0/20
+* DBSubnetZoneB-     10.0.112.0/20
 
 ![Subnets](./images/Screenshot%20(20).png)
 
@@ -44,6 +44,40 @@ Create Two Route Tables - Public Route Table and Private Route Table
 ![RDS](./images/database.webp)
 
 Create Database and port number 3306 in Security Groupof RDS
+
+### Steps to Create MySQL RDS:
+1. Open RDS Console
+   *  Go to AWS Console → Search for RDS → Click Create Database.
+
+2. Choose Database Creation Method
+   * Select Standard Create.
+
+3. Select Engine
+   * Choose MySQL as the database engine.
+   * Select the MySQL version you need (latest recommended).
+
+4. Templates
+Choose a template.
+   * Free Tier (for testing)
+
+5. Settings
+   * DB Instance Identifier: e.g., my-mysql-db
+   * Master Username: e.g., admin
+   * Password: Enter and confirm a strong password.
+
+6. Instance & Storage
+   * Choose an Instance class (e.g., db.t3.micro for free tier).
+   * Allocate storage (default 20GB).
+
+7. Connectivity
+   * Choose your VPC.
+   * Decide if the DB should be publicly accessible.
+   * Attach a Security Group:
+   * Allow inbound traffic on port 3306 (MySQL) from trusted IPs or EC2.
+
+10. Create Database
+    * Click Create Database.
+    * Wait until status changes to avaliable
 
 ## Step 5- Launch Ec2 Instances
 
@@ -91,4 +125,5 @@ Create __Internal Load Balancer__ for AppTier
 ![LB](./images/Screenshot%20(23).png)
 
 ## Conclusion
+
 A 3-tier architecture separates an application into three logical layers: web (presentation), app (business logic), and database (data storage). This structure enhances scalability, security, and maintenance by isolating each layer. It allows each tier to be managed, updated, and scaled independently. In cloud environments like AWS, it’s a best-practice model for building robust and modular applications.
