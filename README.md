@@ -86,13 +86,32 @@ Choose a template.
 1. Lauch JumpServer in public Subnet for ssh to RDS.
    * Install Mariadb
    * Create Database and Table
+     ```
+     sudo yum install mariadb-server105 -y
+     sudo mysql -u admin -p
+     ```
 
 2. Lauch Appserver in Public Subnet
    * Install Nginx, php and php-mysql connector
    * Start and enable nginx and php-fpm
+     ```
+     sudo yum install nginx php -y
+     sudo service nginx start
+     sudo systemctl enable nginx
+     sudo service php-fpm start
+     sudo systemctl enable php-fpm
+
+     sudo yum install mysql-php8.4.x86_64
+     
+     ```
 
  3. Launch WebServer in Public Subnet 
     * Install nginx and enable
+      ```
+       sudo yum install nginx -y
+       sudo service nginx start
+       sudo systemctl enable nginx
+      ```
 
 ## Step 6 - Get AMI
 Create AMI(Amazon Machine Image) of Webserver and Appserver for AutoSCaling
@@ -127,3 +146,4 @@ Create __Internal Load Balancer__ for AppTier
 ## Conclusion
 
 A 3-tier architecture separates an application into three logical layers: web (presentation), app (business logic), and database (data storage). This structure enhances scalability, security, and maintenance by isolating each layer. It allows each tier to be managed, updated, and scaled independently. In cloud environments like AWS, it’s a best-practice model for building robust and modular applications.
+
