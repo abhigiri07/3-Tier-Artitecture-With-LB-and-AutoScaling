@@ -8,6 +8,17 @@ This workshop is a hands-on walk through of a three-tier web architecture in AWS
 
  In this architecture, a public-facing Application Load Balancer forwards client traffic to our web tier EC2 instances. The web tier is running Nginx webservers that are configured to serve a website and redirects our to the application tier's internal facing load balancer. The internal facing load balancer then forwards that traffic to the application tier, which is written in php. The application tier manipulates data in an RDS MySQL and returns it to our web tier. Load balancing, health checks and autoscaling groups are created at each layer to maintain the availability of this architecture.
 
+### What is a 3 Tier Architecture
+A 3 tier architecture consists of a __presentation tier__, __an application tier__, and __a data tier__. The presentation tier houses the user interface, such as the website that a user or client navigates to. It can also be thought of as the "front end." The application tier is where data is processed and is often called the "back end." The data tier is where data is stored and managed.
+
+### Benefits of a 3 Tier Architecture
+* __Decreased development time__ - different teams can work on different tiers simultaneously, resulting in decreased time to deploy
+* __Increased scalability__ - a tier can have an auto-scaling group independent of other tiers, meaning for each tier, you only use what you need
+* __Increased reliability__ - each tier can have multiple resources in multiple availability zones and the success and availability of one tier is independent of the other tiers
+* __Increased security__ - each tier can have its own security group, allowing for custom permissions depending on the needs of that tier
+
+## Let's Create 👉
+
  ## Step-1: Create VPC
  ![VPC](./images/VPC.webp)
 
@@ -146,5 +157,6 @@ Create __Internal Load Balancer__ for AppTier
 ## Conclusion
 
 A 3-tier architecture separates an application into three logical layers: web (presentation), app (business logic), and database (data storage). This structure enhances scalability, security, and maintenance by isolating each layer. It allows each tier to be managed, updated, and scaled independently. In cloud environments like AWS, it’s a best-practice model for building robust and modular applications.
+
 
 
